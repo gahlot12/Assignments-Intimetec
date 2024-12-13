@@ -1,8 +1,17 @@
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 #define MAX_LEN 100
+
+int myIsDigit(char c)
+{
+    return (c >= '0' && c <= '9');
+}
+
+int myIsSpace(char c)
+{
+    return (c == ' ' || c == '\t' || c == '\n');
+}
 
 int precedence(char operator)
 {
@@ -38,13 +47,13 @@ int main(int argc, char const *argv[])
 
     for (int i = 0; str[i] != '\0'; i++)
     {
-        if (isspace(str[i]))
+        if (myIsSpace(str[i]))
             continue;
 
-        if (isdigit(str[i]))
+        if (myIsDigit(str[i]))
         {
             int num = 0;
-            while (isdigit(str[i]))
+            while (myIsDigit(str[i]))
             {
                 num = num * 10 + (str[i] - '0');
                 i++;
