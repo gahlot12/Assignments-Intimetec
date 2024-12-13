@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <ctype.h>
 #include <string.h>
 
 #define MAX_LEN 100
