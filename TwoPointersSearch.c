@@ -1,28 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void performBinarySearch(int *arr, int target, int size)
+void performTwoPointerSearch(int *arr, int target, int size)
 {
     int left = 0, right = size - 1;
     int found = 0;
 
-    while (left <= right)
+    while (left < right)
     {
-        int mid = left + (right - left) / 2;
+        int sum = arr[left] + arr[right];
 
-        if (arr[mid] == target)
+        if (sum == target)
         {
-            printf("Target found at index %d\n", mid);
+            printf("Pair found: %d and %d\n", arr[left], arr[right]);
             found = 1;
             break;
         }
-        if (arr[mid] < target)
+        if (sum < target)
         {
-            left = mid + 1;
+            left++;
         }
         else
         {
-            right = mid - 1;
+            right--;
         }
     }
 
@@ -52,7 +52,7 @@ int main()
         scanf("%d", &arr[i]);
     }
 
-    performBinarySearch(arr, target, size);
+    performTwoPointerSearch(arr, target, size);
 
     printf("Array elements: ");
     for (int i = 0; i < size; i++)
