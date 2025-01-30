@@ -123,6 +123,7 @@ void initializeStack(Stack *stack)
 // The function push() adds an element to the stack by enqueuing it into the queue.
 // After enqueuing the new element, the queue is rotated such that the newly pushed element becomes the front of the queue.
 // This ensures the stack's top element is at the front of the queue.
+// Time complexity : O(N)
 void push(Stack *stack, int value)
 {
     enqueue(stack->queue, value);
