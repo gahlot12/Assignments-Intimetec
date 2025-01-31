@@ -48,7 +48,7 @@ int compareSeverity(char *s1)
     }
     if (s1[i] == '\0' && critical[i] == '\0')
     {
-        return 1;
+        return 0;
     }
 
     i = 0;
@@ -59,10 +59,10 @@ int compareSeverity(char *s1)
     }
     if (s1[i] == '\0' && serious[i] == '\0')
     {
-        return 2;
+        return 1;
     }
 
-    return 0;
+    return 2;
 }
 
 void insertPatient(Patient **head, int id, char *severity)
@@ -74,7 +74,6 @@ void insertPatient(Patient **head, int id, char *severity)
 
     if (*head == NULL)
     {
-        newPatient->next = (*head);
         *head = newPatient;
         return;
     }
@@ -84,8 +83,6 @@ void insertPatient(Patient **head, int id, char *severity)
     {
         current = current->next;
     }
-
-    newPatient->next = current->next;
     current->next = newPatient;
 }
 
@@ -101,7 +98,7 @@ void sortPatients(Patient **head)
 
     int swapped;
 
-    while (current->next != NULL)
+    while (1)
     {
         swapped = 0;
         current = *head;
@@ -124,6 +121,7 @@ void sortPatients(Patient **head)
             current = current->next;
         }
         last = current;
+
         if (swapped == 0)
             break;
     }
